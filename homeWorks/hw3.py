@@ -18,13 +18,49 @@ class Bank:
     def __jackpot(self):
         self._balanse *= 10
 
+    def get_jeckp(self):
+        print(self.__jackpot())
+
     def _copyy(self, other):
         print(f'ваш сложенный баланс {self._balanse + other._balanse}\n'
               f'было{self._balanse}')
 
 
-bank = Bank('mbank', 20)
-load = Bank('optima', 100)
-bank.moneyX()
-print(bank._kill())
-bank._copyy(load)
+class GS(Bank):
+    def __init__(self, name, balanse,):
+        super().__init__(name, balanse)
+
+    #сеттеры
+    def name(self):
+        return self._name
+
+    def balance(self):
+        return self._balanse
+
+    #геттеры
+    def name(self, a):
+        self._name = a
+
+    def balance(self, a):
+        self._balanse = a
+
+
+class Prop(Bank):
+    def __init__(self, name, balanse):
+        super().__init__(name, balanse)
+
+
+    #проперти
+    @property
+    def gotname(self):
+        return f'I\'m {self._name}'
+
+    @property
+    def gotbalanse(self):
+        return f'balanse: {self._balanse}'
+
+
+a = Prop("fdg", 200)
+b = GS("ahmad", 12)
+print(a.gotbalanse)
+print(a.gotname)
